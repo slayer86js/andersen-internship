@@ -14,7 +14,7 @@ function Man(name) {
 }
 Man.prototype = Object.create(Person.prototype);
 Man.prototype.constructor = Man;
-Man.prototype.getName = function() {this.SuperClass.getName.call(this)};
+Man.prototype.getName = function() {Person.prototype.getName.apply(this);};
 Man.prototype.facialHair = function() {console.log('Man has facial hair')};
 let man = new Man('Man');
 man.getName();
