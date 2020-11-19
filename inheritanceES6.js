@@ -15,6 +15,9 @@ class Man extends Person {
     facialHair() {
         console.log('Man has facial hair')
     }
+    getName() {
+        super.getName();
+    }
 }
 let person = new Person('Persona');
 person.getName();
