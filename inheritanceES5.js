@@ -9,8 +9,6 @@ person.getName();
 
 function Man(name) {
     Person.call(this, name);
-    this.class_= Object.getPrototypeOf(this);
-    this.SuperClass= Object.getPrototypeOf(this.class_)
 }
 Man.prototype = Object.create(Person.prototype);
 Man.prototype.constructor = Man;
