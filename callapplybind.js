@@ -1,28 +1,14 @@
-function myCall(func, context, ...args) {
-    function a() {
-        func.apply(context, args)
-    }
-    a();
+Function.prototype.myCall = function(context, ...args) {
+    this.apply(context, args)
 }
-function myApply(func, context, ...args) {
-    function b() {
-        func.call(context, ...args)
-    } 
-    b();
+Function.prototype.myApply = function(context, ...args) {
+    this.call(context, ...args)
 }
-
-function myBindByApply(func, context, ...args) {
-    function c() {
-     func.apply(context, args)
- }
-    c();
+Function.prototype.myBindByApply = function(context, ...args) {
+    this.apply(context, args)
 }
-
-function myBindByCall(func, context, ...args) {
-    function d() {
-     func.call(context, ...args)
- }
-    d();
+Function.prototype.myBindByCall = function(context, ...args) {
+    this.call(context, ...args)
 }
 
 const wood = {
@@ -32,7 +18,7 @@ const wood = {
     fourthPiece: 'Alder'
 };
 
-function glueWoodPieces(insert, secinsert) {
+function glueWoodPieces(insert) {
     const range = Math.random();
     if (range > 0.5) {
     console.log(`High quality: ${this.firstPiece}, ${insert}, ${this.secondPiece}`)}
@@ -40,11 +26,8 @@ function glueWoodPieces(insert, secinsert) {
         console.log(`Low quality: ${this.thirdPiece}, ${this.fourthPiece}`)
     }
 }
-myCall(glueWoodPieces, wood, 'walnut');
-myApply(glueWoodPieces, wood, 'walnut');
-myBindByApply(glueWoodPieces, wood, 'walnut');
-myBindByCall(glueWoodPieces, wood, 'walnut');
-
-
-
+glueWoodPieces.myCall(wood, 'walnut');
+glueWoodPieces.myApply(wood, 'walnut');
+glueWoodPieces.myBindByApply(wood, 'walnut');
+glueWoodPieces.myBindByCall(wood, 'walnut');
 
