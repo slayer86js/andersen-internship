@@ -1,42 +1,13 @@
 function union(a, b) {
-    let arr = [];
-    for (let elem of a) {
-        if (!arr.includes(elem)) {
-            arr.push(elem)
-        }
-    }
-    for (let elem of b) {
-        if (!arr.includes(elem)) {
-            arr.push(elem)
-        }
-    }
-    return arr;
+    return [...new Set(a.concat(b))]
 }
     
-
 function intersection (a, b) {
-    let arr = [];
-    for (elem of a) {
-        if (b.includes(elem)) {
-            arr.push(elem)
-        }
-    }
-    return arr;
+    return [...new Set(a.filter(item => b.includes(item)))]
 }
 
 function difference (a, b) {
-    let arr = [];
-    for (elem of a) {
-        if (!b.includes(elem)) {
-            arr.push(elem)
-        }
-    }
-    let result = [];
-    for (elem of arr)
-    if (!result.includes(elem)) {
-        result.push(elem)
-    }
-    return result;
+    return [...new Set(a.filter(item => !b.includes(item)))]
 }
 
 console.log(union([4,5,7,2,1,5],[1,2,3,7,9])); // [4, 5, 7, 2, 1, 3, 9]
