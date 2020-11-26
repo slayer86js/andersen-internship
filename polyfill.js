@@ -1,24 +1,11 @@
-if (!Object.create) {
-    Object.create = function() {
-        function F() {}
-        let hasOwn = Object.prototype.hasOwnProperty;
-        return function(O) {
-         F.prototype = O;
-         let obj = new F()
-         F.prototype = null;
-         if (arguments.length > 1) {
-            let Properties = Object(arguments[1]);
-            for (let prop in Properties) {
-                if (hasOwn.call(Properties, prop)) {
-                    obj[prop] = Properties[prop];
-                }
+Object.create = function(O, object) {
+    function F() {}
+    F.prototype = O;
+    let obj = new F();
+        for (let key in object) {
+            if (object.hasOwnProperty(key)) {
+               obj[key] = object[key].value;
             }
         }
-        return obj;
-      }
-   };
-}
-
-
-
-
+    return obj;
+};
