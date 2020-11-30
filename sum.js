@@ -1,6 +1,6 @@
 function sum(a) {
     const f = b => {
-     if (b == undefined) {
+     if (!b) {
         return f;
         } else {
         a += b;
